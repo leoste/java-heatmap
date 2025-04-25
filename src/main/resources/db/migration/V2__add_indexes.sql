@@ -1,0 +1,2 @@
+CREATE INDEX idx_started_at ON CALL_LOG(STARTED_AT);
+CREATE INDEX idx_ended_at ON CALL_LOG(ENDED_AT);
