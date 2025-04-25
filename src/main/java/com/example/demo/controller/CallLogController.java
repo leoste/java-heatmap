@@ -2,13 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.AnswerRateRequest;
 import com.example.demo.dto.RateHour;
+import com.example.demo.entity.CallLog;
 import com.example.demo.service.CallLogService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -32,5 +31,10 @@ public class CallLogController {
                 request.getStartHour(),
                 request.getEndHour()
         );
+    }
+
+    @GetMapping("/call-logs")
+    public List<CallLog> getAllCallLog() {
+        return callLogService.getCallLogs();
     }
 }
