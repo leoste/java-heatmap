@@ -60,3 +60,7 @@ localhost:8080/api/heatmap/answer-rate?numberOfShades=7&dateInput=2025-04-24&sta
 ### call-logs endpoint
 
 To know what test data you have, you can call GET `/api/heatmap/call-logs`. Here too you must provide credentials, which will be the same as for the answer-rate endpoint.
+
+## testing
+
+You can run tests with `./gradlew test`
