@@ -10,7 +10,9 @@ To run the project, run the following command in your terminal: `./gradlew BootR
 
 Each time the project runs, random test data is generated.
 
-Once it runs, you can call on the `/api/heatmap/answer-rate` endpoint. The endpoint is protected by Basic Auth. Currently, the configured username is `user` and password `password`.
+### answer-rate endpoint
+
+Once the project runs, you can call GET `/api/heatmap/answer-rate`. The endpoint is protected by Basic Auth. Currently, the configured username is `user` and password `password`.
 
 The following query parameters must be added: `numberOfShades` (can be between 3 and 10), `dateInput` (must be formatted YYYY-MM-DD)
 
@@ -54,3 +56,7 @@ localhost:8080/api/heatmap/answer-rate?numberOfShades=7&dateInput=2025-04-24&sta
     }
 ]
 ```
+
+### call-logs endpoint
+
+To know what test data you have, you can call GET `/api/heatmap/call-logs`. Here too you must provide credentials, which will be the same as for the answer-rate endpoint.
