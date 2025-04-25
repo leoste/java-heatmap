@@ -25,7 +25,7 @@ public class CallLogService {
 
     public List<RateHour> getFakeAnswerRate(String dateInput, Integer numberOfShades, Integer startHour, Integer endHour) {
         List<RateHour> rateHours = new ArrayList<>();
-        RateHour rateHour = new RateHour(0, 15, 20);
+        RateHour rateHour = new RateHour(0, 15, 20, 10);
         rateHours.add(rateHour);
         return rateHours;
     }

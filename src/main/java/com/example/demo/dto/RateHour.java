@@ -4,38 +4,31 @@ import lombok.Data;
 
 @Data
 public class RateHour {
-    private Integer hour;
-    private Integer answeredCalls;
-    private Integer totalCalls;
-    private Float rate;
-    private Shade shade;
+    private int hour;
+    private int answeredCalls;
+    private int totalCalls;
+    private float rate;
+    private String shade;
 
-    public RateHour(Integer hour, Integer answeredCalls, Integer totalCalls) {
+    public RateHour(int hour, int answeredCalls, int totalCalls, int numberOfShades) {
         this.hour = hour;
         this.answeredCalls = answeredCalls;
         this.totalCalls = totalCalls;
         this.rate = calculateRate();
-        this.shade = calculateShade();
+        this.shade = calculateShade(numberOfShades);
     }
 
     private Float calculateRate() {
         if (totalCalls == 0) {
             return 0.0f;
         }
-        return (answeredCalls.floatValue() / totalCalls) * 100.0f;
+        return (answeredCalls / (float)totalCalls) * 100.0f;
     }
 
-    private Shade calculateShade() {
-        if (rate <= 20.0) {
-            return Shade.Shade1;
-        } else if (rate <= 40.0) {
-            return Shade.Shade2;
-        } else if (rate <= 60.0) {
-            return Shade.Shade3;
-        } else if (rate <= 80.0) {
-            return Shade.Shade4;
-        } else {
-            return Shade.Shade5;
-        }
+    private String calculateShade(int numberOfShades) {
+        float range = 100.0f / numberOfShades;
+        int shadeLevel = (int) Math.ceil(rate / range);
+        shadeLevel = Math.min(Math.max(shadeLevel, 1), numberOfShades); // ensure within bounds
+        return "Shade" + shadeLevel;
     }
 }
