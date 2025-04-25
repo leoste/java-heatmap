@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.entity.CallLog;
+import com.example.demo.entity.CallLogStatus;
 import com.example.demo.repository.CallLogRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
 
@@ -18,7 +20,7 @@ public class TestDataLoader {
     public CommandLineRunner loadTestData(CallLogRepository repository) {
         return args -> {
             Random random = new Random();
-            String[] statuses = {"COMPLETED", "MISSED", "FAILED"};
+            String[] statuses = Arrays.stream(CallLogStatus.values()).map(Enum::name).toArray(String[]::new);
 
             for (int d = 0; d < 3; d++) {
                 for (int i = 0; i < 50; i++) {
