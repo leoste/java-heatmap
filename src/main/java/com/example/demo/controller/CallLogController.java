@@ -25,7 +25,7 @@ public class CallLogController {
 
     @GetMapping("/answer-rate")
     public List<RateHour> getCallLogAnswerRate(@Valid @ModelAttribute AnswerRateRequest request) {
-        return callLogService.getFakeAnswerRate(
+        return callLogService.getAnswerRate(
                 request.getDateInput(),
                 request.getNumberOfShades(),
                 request.getStartHour(),
